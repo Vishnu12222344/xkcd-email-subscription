@@ -5,14 +5,14 @@ on:
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest  # ✅ FIXED: Use GitHub-hosted runner
 
     steps:
       - name: Checkout Candidate's Code
         uses: actions/checkout@v4
       
-      - name: Run tests
-        uses: docker://ghcr.io/rtlearn/gh-classroom
+      - name: Run tests (GH Classroom Docker)
+        uses: docker://ghcr.io/rtlearn/gh-classroom  # ✅ Predefined test image, no code change
 
       - name: Cleanup
         if: ${{ always() }}
